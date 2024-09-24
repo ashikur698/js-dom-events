@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubble</title>
+    <style>
+        #item-2{
+            border: 2px solid blueviolet;
+        }
+        ul{
+            border: 5px solid greenyellow;
+        }
+        section{
+            border: 5px solid tomato;
+        }
+        body{
+            border: 5px solid palevioletred;
+        }
+    </style>
+</head>
+<body id="body">
+    <h1>Exploring Event Bubble</h1>
+    <section id="list-container">
+        <ul id="list-ul">
+            <li id="item-1">Lorem, ipsum.</li>
+            <li id="item-2">Impedit, dolore.</li>
+            <li id="item-3">Voluptas, officiis?</li>
+            <li id="item-4">Facere, qui!</li>
+            <li id="item-5">Vero, unde?</li>
+            <li id="item-6">Iste, in?</li>
+        </ul>
+    </section>
+    <script>
+        document.getElementById('item-2').addEventListener('click',  function(event){
+            console.log('Item 2 Clicked')
+            event.stopImmediatePropagation()
+        })
+        document.getElementById('item-2').addEventListener('click',  function(event){
+            console.log('Item 2 Clicked 2times')
+            // event.stopPropagation()
+        })
+        document.getElementById('item-2').addEventListener('click',  function(event){
+            console.log('Item 2 Clicked 3times')
+            // event.stopPropagation()
+        })
+        document.getElementById('item-2').addEventListener('click',  function(event){
+            console.log('Item 2 Clicked 4times')
+            // event.stopPropagation()
+        })
+        document.getElementById('list-ul').addEventListener('click', function(){
+            console.log('UL Clicked')
+        })
+        document.getElementById('list-container').addEventListener('click', function(){
+            console.log('Section Clicked')
+        })
+        document.getElementById('body').addEventListener('click', function(){
+            console.log('Body Clicked')
+        })
+    </script>
+</body>
+</html>
